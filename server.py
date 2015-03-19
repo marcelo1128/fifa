@@ -3,12 +3,14 @@ import os
 import uuid
 from flask import Flask, session,render_template,url_for,redirect,request
 from flask.ext.socketio import SocketIO, emit
-import psycopg2, psycopg2.extras
+import psycopg2
+import psycopg2.extras
 
 app = Flask(__name__, static_url_path='')
 app.config['SECRET_KEY'] = 'secret!'
 #app.debug = True
 socketio = SocketIO(app)
+app.secret_key = os.urandom(24).encode('hex')
 
 
 messages = []
@@ -146,9 +148,16 @@ def on_create(username,password):
 def on_login(pw):
     conn = connectToDB()
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    query = "SELECT * from users WHERE username = %s and password = %s"
-    print (cur.mogrify(query), (session['username'], pw))
-    cur.execute(query, (session['username'], pw))
+    
+ 
+    query = "SELECT * FROM users WHERE username='%s' AND password = %s ;" % (session['username'],"crypt( '%s' , password)") % (pw)
+
+    #query = "SELECT * from users WHERE username = %s and password = %s"
+    
+
+    print (cur.mogrify(query))
+    
+    cur.execute(query)
     #if query returns results (username/password worked)
     if cur.fetchone():
         #session['username'] = username

@@ -28,5 +28,6 @@ CREATE TABLE IF NOT EXISTS messages
 GRANT select, insert on users, messages to session;
 GRANT ALL on sequence users_id_seq, messages_id_seq to session; 
 
-insert into users (username, password) VALUES ('raz', 'p00d13');
-insert into users (username, password) VALUES ('ann','changeme');
+insert into users (username, password) VALUES
+('raz', crypt('p00d13',gen_salt('bf'))),
+('ann', crypt('changeme',gen_salt('bf')));
