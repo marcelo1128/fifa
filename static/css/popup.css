@@ -1,0 +1,66 @@
+body 
+      {
+        padding-top: 60px;
+      }
+  
+      #popupbox
+      {
+        margin: 0; 
+        margin-left: 10%; 
+        margin-right: 70%;
+        margin-top: 70px; 
+        padding-top: 10px; 
+        width: 20%; 
+        height: 300px; 
+        position: absolute; 
+        background: #FFFFFF; 
+        border: solid #909090 2px;
+        z-index: 9; 
+        font-family: arial; 
+        visibility: hidden; 
+      }
+      #searchPopup
+      {
+        margin: 0; 
+        margin-left: 10%; 
+        margin-right: 70%;
+        margin-top: 70px; 
+        padding-top: 10px; 
+        width: 40%; 
+        height: 520px; 
+        position: absolute; 
+        background: #FFFFFF; 
+        border: solid #909090 2px; 
+        z-index: 9; 
+        font-family: arial; 
+        visibility: hidden; 
+      }
+      #border
+      {
+          border: 1px solid gray;
+      }
+      /*[draggable=true]
+      {
+        cursor: move;
+      }*/
+      .resizable 
+      {
+          overflow-y: scroll;
+          /*resize: both;*/
+          /*/max-width: 500px;*/
+          max-height: 400px;
+      }
+      .scrolltable
+      {
+        overflow-y: scroll;
+        width: 900px;
+        height: 700px;
+      }
+      .current_room 
+      {
+        font-weight:bold;
+      }
+      #inline 
+      {
+        display:inline-block;
+      }
